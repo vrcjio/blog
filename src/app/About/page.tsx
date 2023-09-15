@@ -1,8 +1,11 @@
-import React from 'react'
+import TopBar from "@/componets/topbar"
 
 const page = () => {
   return (
-    <div>About</div>
+    <>
+    <TopBar/>
+      <div>About</div>
+    </>
   )
 }
 

@@ -1,10 +1,15 @@
-import TopBar from '@/componets/topbar'
-import React from 'react'
+import Carousel from "@/componets/carousel"
+import TopBar from "@/componets/topbar"
+import UserArticals from "@/componets/userArticals"
 
 const page = () => {
   return (
     <>
-      Home Page
+    <TopBar />
+    <Carousel />
+    <div className="fluid-container">
+      <UserArticals />
+    </div>
     </>
   )
 }

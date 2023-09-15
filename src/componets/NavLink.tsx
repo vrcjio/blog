@@ -6,7 +6,6 @@ import React from 'react'
 
 const NavLink = () => {
     const path = usePathname();
-    console.log(path);
     const links = {
         title:['Home','About','Sign In'],
         link:['/', '/About', '/signIn']
@@ -16,7 +15,7 @@ const NavLink = () => {
             {
                 links.title.map((title, index)=>{
                     return(
-                            <Link className={`fw-bold nav-link ${path===links.link[index] && 'text-warning'}`} href={links.link[index]}>{title}</Link>
+                            <Link key={index} className={`fw-bold nav-link ${path===links.link[index] && 'text-warning'}`} href={links.link[index]}>{title}</Link>
                        
                     )
                 })

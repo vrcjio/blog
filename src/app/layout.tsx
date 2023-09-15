@@ -1,8 +1,10 @@
-import TopBar from '@/componets/topbar'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
+import Footer from '@/componets/footer'
+import { Toaster } from 'react-hot-toast'
+import Auth from '@/componets/AuthSession'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,11 +23,12 @@ export default function RootLayout({
       <head>
       </head>
       <body className={inter.className}>
-
-        <TopBar />
-        {children}
+        <Auth>
+          {children}
+          <Footer />
+          <Toaster />
+        </Auth>
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" defer />
-
       </body>
     </html>
   )
