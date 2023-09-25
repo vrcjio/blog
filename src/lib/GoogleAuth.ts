@@ -18,6 +18,7 @@ const getGoogleCredentials = () => {
 }
 
 export const authOption: NextAuthOptions = {
+  
     providers: [
         GoogleProvider({
             clientId: getGoogleCredentials().clientId,
@@ -26,7 +27,7 @@ export const authOption: NextAuthOptions = {
                 timeout: 3500,
             }
         }),
-    ],
+    ], 
 
     callbacks: {
         async jwt({ _, user }) {

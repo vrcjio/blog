@@ -1,27 +1,81 @@
 'use client'
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import React from 'react'
+import ConfirmationBox from './ConfirmationBox';
+import toast from 'react-hot-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserData } from '@/lib/Redux/user';
+import { signOutUserAPI } from '@/util/userAPIs';
+
+
+
 
 const NavLink = () => {
+    const user = useSelector((state: any) => state.user.data);
+    const dispatch = useDispatch();
     const path = usePathname();
-    const links = {
-        title:['Home','About','Sign In'],
-        link:['/', '/About', '/signIn']
-    }
-    return (
-        <span className="navbar-nav me-auto mb-2 mb-lg-0">
-            {
-                links.title.map((title, index)=>{
-                    return(
-                            <Link key={index} className={`fw-bold nav-link ${path===links.link[index] && 'text-warning'}`} href={links.link[index]}>{title}</Link>
-                       
-                    )
-                })
-            }
 
-        </span>
+    const [showModal, setShowModal] = React.useState(false);
+    const router = useRouter();
+
+    const signOut = () => {
+        setShowModal(true);
+    }
+    const ConfirmSignOut = async () => {
+        setShowModal(false);
+        try {
+            signOutUserAPI();
+            dispatch(setUserData());
+            router.push("/");
+        } catch (error) {
+            console.log(error);
+            toast.error("please try again")
+        }
+    }
+
+
+    return (
+        <>
+            {showModal && <ConfirmationBox
+                title="Sure You'r logout"
+                trueBtn='Yes'
+                falseBtn="No"
+                closeModal={() => setShowModal(!showModal)}
+                trueFunction={() => ConfirmSignOut()}
+            />}
+
+            <span className="navbar-nav me-auto mb-2 mb-lg-0">
+                <Link href="/" className={`fw-bold nav-link ${path === '/' && 'text-warning'}`}>
+                    Home
+                </Link>
+                {
+                    user ?
+                        <>
+                            < Link href="/user" className={`fw-bold nav-link ${path === '/user' && 'text-warning'}`}>
+                                Dashboard
+                            </Link>
+                            <Link onClick={signOut} href="#signOut" className={`fw-bold nav-link`}>
+                                Sign Out
+                            </Link>
+                        </>
+                        :
+                        <Link href="/signin" className={`fw-bold nav-link ${path === '/signin' && 'text-warning'}`}>
+                            Sign In
+                        </Link>
+                }
+                <Link href="/about" className={`fw-bold nav-link ${path === '/about' && 'text-warning'}`}>
+                    About
+                </Link>
+            </span >
+            <form className="d-flex">
+                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-warning" type="submit">Search</button>
+            </form>
+
+
+        </>
     )
 }
 

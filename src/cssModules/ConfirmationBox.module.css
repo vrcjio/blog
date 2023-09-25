@@ -1,0 +1,30 @@
+.Close{
+    position: fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+.closeBtn{
+    position: fixed;
+    top:0;
+    right: 5px;
+    font-size: 150%;
+    cursor: pointer;
+    color: red;
+}
+
+.Modal{
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    box-shadow: 2px 2px 5px black;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    overflow: hidden;
+    border-radius: 10px;
+}

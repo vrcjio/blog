@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/models/user.js", "src/lib/GoogleAuth.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/lib/models/user.js", "src/lib/GoogleAuth.ts", "src/lib/Redux/store.js"],
   "exclude": ["node_modules"]
 }
