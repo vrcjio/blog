@@ -3,9 +3,9 @@ import Post from '@/lib/models/post';
 import {NextRequest, NextResponse} from 'next/server';
 export const POST =async (req:NextRequest) => {
     try {
-        const {authorId} = await req.json();
+        const {id} = await req.json();
         await DB_Connection();
-        const data = await Post.find({authorId});
+        const data = await Post.findById(id);
         return NextResponse.json({data}, {status:201});
 
     } catch (error:any) {

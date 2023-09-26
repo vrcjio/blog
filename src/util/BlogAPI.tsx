@@ -32,3 +32,13 @@ export const deletePostAPI = async (payload: any) => {
         return error;
     }
 }
+
+export const getPostAPI = async (payload:any) =>{
+    try {
+         const {data} = await axios.post("/api/post/getPost",payload);
+         return data;
+    } catch (error:any) {
+        console.log(error);
+        return error;
+    }
+}

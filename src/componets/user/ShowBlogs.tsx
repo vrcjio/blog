@@ -3,8 +3,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import RenderHTML from './renderHTML'
 import React from 'react'
-import { getPostsbyRedux, getUserPosts } from '@/lib/Redux/post'
-import { isConciseBody } from 'typescript'
+import { getPostsbyRedux } from '@/lib/Redux/post'
 
 const ShowBlogs = () => {
     const posts = useSelector((state: any) => state.post);
@@ -33,7 +32,7 @@ const ShowBlogs = () => {
 
                         posts.data[openPage-1]?.data ?
                         posts.data[openPage-1]?.data.map((item: any, index: number) =>
-                            <RenderHTML item={item} index={index} />
+                            <RenderHTML item={item} index={index} pageIndex={openPage-1} />
                         )
                         :
                         <h1>Not post here</h1>
