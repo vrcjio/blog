@@ -2,14 +2,14 @@ import { DB_Connection } from "@/lib/ConnectDb";
 import User from "@/lib/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcryptjs';
-import Jwt from 'jsonwebtoken';
+import Jwt, { JwtPayload } from 'jsonwebtoken';
 
 
 
 export async function GET(req: NextRequest){
     const cookieToken = req.cookies.get(process.env.LOGIN_TOKEN! || "loginToken")?.value || "";
     try {
-        const { data } = Jwt.verify(cookieToken, process.env.JWT_TOKEN!);
+        const { data } :JwtPayload | any = Jwt.verify(cookieToken, process.env.JWT_TOKEN!);
 
         return NextResponse.json({ data }, { status: 200 });
 
