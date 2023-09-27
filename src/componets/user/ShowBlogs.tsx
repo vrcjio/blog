@@ -46,7 +46,7 @@ export default function ShowBlogs() {
                 }
                 {
                     posts.data[openPage-1]?.totalPages &&
-                    Array(posts.totalPages).fill(0).map((_, index) =>
+                    Array(posts.totalPages).fill(0).map((_:any, index:any) =>
                         Array(3).fill(0).map((_, p) => {
                             if (index + 1 === posts.data[openPage-1]?.page + p || index + 1 === posts.data[openPage-1]?.page - p) {
                                 return <button onClick={() => changePage(index + 1)} className={`btn rounded-0 border ${posts.data[openPage-1].page === index + 1 ? 'btn-secondary' : 'btn-light'}`}>{index + 1}</button>

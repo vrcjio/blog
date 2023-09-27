@@ -132,7 +132,7 @@ export default function UserBlogLayout({ userData, postContent }:any) {
             <div className='bg-light p-3'>
               {
                 // post comments 
-                postContent?.comment?.map((_, index:number) =>
+                postContent?.comment?.map((_:any, index:number) =>
                   <p className='ms-3 p-3 col-md-8 border bg-white' key={index} >
                     <span className='float-end text-secondary'>date and time</span>
                     <h6><Link href="#username" className='nav-link p-0 text-dark'>userData {index + 1}</Link></h6>
