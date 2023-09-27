@@ -1,5 +1,5 @@
-import {authOption} from '@/lib/GoogleAuth';
-import NextAuth from 'next-auth/next';
+// import {authOption} from '@/lib/GoogleAuth';
+// import NextAuth from 'next-auth/next';
 
-const handler = NextAuth(authOption);
-export {handler as GET, handler as POST}
+// const handler = NextAuth(authOption);
+// export {handler as GET, handler as POST}
