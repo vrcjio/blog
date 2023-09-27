@@ -1,5 +1,6 @@
 import React from 'react'
 import Aos from './Aos'
+import Link from 'next/link'
 
 export default function Carousel() {
     return (
@@ -25,7 +26,7 @@ export default function Carousel() {
                                 <p>
                                     It{"'"}s time to embark on a new adventure. Are you ready to start your journey with us?
                                 </p>
-                                <button className='btn btn-outline-dark'>Join Now</button>
+                                <Link href="/signin" prefetch={false} className='btn btn-outline-dark joinNowBtn'  role="button">Join Now</Link>
                             </div>
                         </div>
                     </div>

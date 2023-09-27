@@ -2,12 +2,13 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
 
-import React from 'react'
+import {useState} from 'react'
 import ConfirmationBox from './ConfirmationBox';
 import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserData } from '@/lib/Redux/user';
+import { initUser, setUserData } from '@/lib/Redux/user';
 import { signOutUserAPI } from '@/util/userAPIs';
+import { initAllPost } from '@/lib/Redux/post';
 
 
 
@@ -17,7 +18,7 @@ export default function NavLink (){
     const dispatch:any = useDispatch();
     const path = usePathname();
 
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModal, setShowModal] = useState(false);
     const router = useRouter();
 
     const signOut = () => {
@@ -27,14 +28,14 @@ export default function NavLink (){
         setShowModal(false);
         try {
             signOutUserAPI();
-            dispatch(setUserData());
+            dispatch(initAllPost());
+            dispatch(initUser());
             router.push("/");
         } catch (error) {
             console.log(error);
             toast.error("please try again")
         }
     }
-
 
     return (
         <>

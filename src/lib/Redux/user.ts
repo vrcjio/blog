@@ -1,8 +1,8 @@
 'use client'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {userSignInAPI} from '@/util/userAPIs'
+import { userSignInAPI } from '@/util/userAPIs'
 
-export const setUserData = createAsyncThunk('setUserData',userSignInAPI);
+export const setUserData = createAsyncThunk('setUserData', userSignInAPI);
 
 const initialState = {
     isLoading: false,
@@ -13,6 +13,11 @@ export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        initUser: (state) => {
+            state.isLoading = false;
+            state.data = null;
+            state.isError = false;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(setUserData.fulfilled, (state: any, action) => {
@@ -24,12 +29,13 @@ export const userSlice = createSlice({
             state.isLoading = true
         })
 
-        builder.addCase(setUserData.rejected,(state:any, action)=>{
-            console.log("error found ",action.payload);
-            state.isError=true;
+        builder.addCase(setUserData.rejected, (state: any, action) => {
+            console.log("error found ", action.payload);
+            state.isError = true;
         })
     }
 });
 
 
+export const { initUser } = userSlice.actions;
 export default userSlice.reducer;

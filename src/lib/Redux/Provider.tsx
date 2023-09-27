@@ -5,7 +5,7 @@ import { store } from "./store";
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from './user';
 import { getUserPosts } from './post';
-import page from '@/app/page';
+import { getPublicPosts } from './publicPost';
 const ReduxProvider = ({ children, }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
@@ -17,25 +17,26 @@ const ReduxProvider = ({ children, }: { children: React.ReactNode }) => {
 }
 
 const DefaultComponent = ({ children }: { children: React.ReactNode }) => {
-  const dispatch :any= useDispatch();
+  const dispatch: any = useDispatch();
   const user = useSelector((state: any) => state.user.data);
   const post = useSelector((state: any) => state.post);
-  const [getOneTime, setGetOneTime] = useState(0);
+  const publicPost = useSelector((state: any) => state.publicPost);
   //first get user data
   useEffect(() => {
     dispatch(setUserData());
-  }, [])
+    dispatch(getPublicPosts({}))
+  }, []);
 
   //second get user posts
   useEffect(() => {
-    if (user && getOneTime === 0) { //if user is exsiting, getOneTime is confirme to call funciton only one time
-      setGetOneTime(1)
+    if (user) { //if user is exsiting, getOneTime is confirme to call funciton only one time
       const authorId = user._id;
       dispatch(getUserPosts({ authorId }))
     }
-  }, [user]);
+  }, [user?._id]);
 
   //if user change add requrest to next page for next post
+  //for user private post
   useEffect(() => {
     if (user?._id && post?.currentPage) {
       const authorId = user._id;
@@ -44,12 +45,20 @@ const DefaultComponent = ({ children }: { children: React.ReactNode }) => {
     }
   }, [post?.loadPages]);
 
+  //for public post
+  useEffect(() => {
+    if (publicPost?.currentPage) {
+      const page = publicPost.currentPage || 0;
+      dispatch(getPublicPosts({ page }));
+    }
+  }, [publicPost?.loadPages]);
+
   //if use Add new post run this effect
   useEffect(() => {
     if (post?.newPost) {
       if (user?._id) {
         const authorId = user._id;
-        dispatch(getUserPosts({ authorId}));
+        dispatch(getUserPosts({ authorId }));
       }
     }
   }, [post?.newPost])

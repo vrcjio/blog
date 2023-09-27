@@ -1,43 +1,67 @@
+'use client'
 
+import { useSelector, useDispatch } from 'react-redux'
+import RenderHTML from './user/renderHTML';
 import React from 'react'
-import Aos from './Aos'
-export default function UserArticals () {
+import { getPublicPostLocal } from '@/lib/Redux/publicPost'
 
-  const date = new Date();
-  const user = {
-    name: "abcd",
-    title: "My artical",
-    text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    date: date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear(),
-  }
+export default function UserArticals() {
+    const posts = useSelector((state: any) => state.publicPost);
+    const [id, setId] = React.useState();
+    const [openPage, setOpenPage]:any = React.useState();
+    const dispatch:any = useDispatch();
 
-  return (
-    <>
-      <Aos animation="fade-up">
-        <div className='d-flex flex-wrap justify-content-center'>
+    const changePage = (pageNo: number) => {
+        dispatch(getPublicPostLocal(pageNo))
 
-          {Array(8).fill(0).map((item:any, index:any) =>
-            <div key={index} className="shadow m-1" style={{ width: "18rem" }} data-aos="fade-up">
-              <div className="card-body">
-                <div className="mb-3 text-secondary text-capitalize">
-                  <span className="fst-italic">Date of publication </span>
-                  <span className="float-end">{user?.date}</span>
-                </div>
-                <h5 className="card-title">{user.title}</h5>
-                <p className="card-text">{
-                  (user.text?.length > 50) ? user.text.substring(0, 50) + '...' : user.text
-                }</p>
-                <a href="#" className="nav-link text-secondary float-start ps-0 text-capitalize">See More...</a>
-                <br />
-                <span className="float-end text-capitalize fst-italic">Author: <a href="#" className="text-secondary">{user.name}</a>
-                </span>
-                <br />
-              </div>
+    }
+
+    React.useEffect(() => {
+        setId(posts?.data?.authorId);
+        setOpenPage(posts?.currentPage);
+    })
+    return (
+        <>
+            <h6 className='m-2 me-5 pe-5  text-secondary position-absolute end-0 '>total : {posts.data[openPage-1]?.totalData && posts.data[openPage-1]?.totalData}</h6>
+            <div className="accordion-body d-flex flex-wrap">
+                {
+                    posts.isLoading ?
+                        <div className="spinner-border text-secondary mx-auto" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        :
+
+                        posts.data[openPage-1]?.data ?
+                        posts.data[openPage-1]?.data.map((item: any, index: number) =>
+                            <RenderHTML item={item} index={index} pageIndex={openPage-1} />
+                        )
+                        :
+                        <h1>Not post here</h1>
+                }
             </div>
-          )}
-
-        </div>
-      </Aos>
-    </>
-  )
+            <div className='bg-light border d-flex justify-content-center'>
+                {
+                    posts.data[openPage-1]?.totalPages &&
+                    posts.data[openPage-1]?.page != 1 &&
+                    <button onClick={() => changePage(posts.data[openPage-1].page - 1)} className={`btn rounded-0 border btn-light`}><i className="fa-sharp fa-solid fa-angle-left"></i></button>
+                }
+                {
+                    posts.data[openPage-1]?.totalPages &&
+                    Array(posts.totalPages).fill(0).map((_:any, index:any) =>
+                        Array(3).fill(0).map((_, p) => {
+                            if (index + 1 === posts.data[openPage-1]?.page + p || index + 1 === posts.data[openPage-1]?.page - p) {
+                                return <button onClick={() => changePage(index + 1)} className={`btn rounded-0 border ${posts.data[openPage-1].page === index + 1 ? 'btn-secondary' : 'btn-light'}`}>{index + 1}</button>
+                            }
+                        })
+                    )
+                }
+                {
+                    posts.data[openPage-1]?.totalPages &&
+                    posts.data[openPage-1]?.totalPages != posts.data[openPage-1]?.page &&
+                    <button onClick={() => changePage(posts.data[openPage-1].page + 1)} className={`btn rounded-0 border btn-light`}><i className="fa-sharp fa-solid fa-chevron-right"></i></button>
+                }
+          
+            </div>
+        </>
+    )
 }

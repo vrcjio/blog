@@ -58,6 +58,9 @@ body{
 button:focus {
   outline: none !important;
 }
+.joinNowBtn:hover{
+  color:white !important;
+}
 /* error hide in nextjs */
 /* nextjs-portal {
   display: none;

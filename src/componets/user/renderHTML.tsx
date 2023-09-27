@@ -38,7 +38,7 @@ export default function RenderHTML ({ item, index, pageIndex }: any){
                 <p className="card-text">
                     {/* <div dangerouslySetInnerHTML={{ __html: item.content }} ></div> */}
                     {item.shortNote}
-                    ... <Link className='text-secondary text-decoration-none' href={`/post/${item._id}/${item.authorId}/${index}/${pageIndex}`}>Read More</Link>
+                    ... <Link className='text-secondary text-decoration-none' href={`/publicPost/${item._id}/${item.authorId}/${index}/${pageIndex}`}>Read More</Link>
                 </p>
                 <div className='mb-3'>
                     <span>Related :

@@ -15,7 +15,7 @@ export const getUserPosts = createAsyncThunk('getUserPosts', async (payload: any
 });
 
 
-const initialState = {
+const init = {
     isLoading: false,
     isError: false,
     newPost: false,
@@ -27,7 +27,7 @@ const initialState = {
 }
 export const postSlice = createSlice({
     name: 'post',
-    initialState,
+    initialState: init,
     reducers: {
         getPostsbyRedux: (state, action) => {
             const res = state.loadPages.find((page) => page == action.payload);
@@ -50,6 +50,15 @@ export const postSlice = createSlice({
                 const index = state.loadPages.indexOf(action.payload.page)
                 state.loadPages.splice(index, state.loadPages.length - index);
             }
+        },
+        initAllPost: (state) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.newPost = false;
+            state.data = [];
+            state.loadPages = [1];
+            state.currentPage = 1;
+            state.totalPages = 0;
         }
     },
     extraReducers: (builder) => {
@@ -76,6 +85,6 @@ export const postSlice = createSlice({
 });
 
 
-export const { getPostsbyRedux, addNewPostInRedux, deletePostInRedux } = postSlice.actions;
+export const { initAllPost, getPostsbyRedux, addNewPostInRedux, deletePostInRedux } = postSlice.actions;
 
 export default postSlice.reducer;

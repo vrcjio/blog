@@ -5,10 +5,11 @@ import {NextRequest, NextResponse} from 'next/server';
 export async function POST (req:NextRequest) {
     try {
         const {authorId ="", page = 1, limit = 3} = await req.json();
+        console.log("author id : ",authorId)
         
         await DB_Connection(); 
         const total = await Post.find({authorId:{$regex :authorId, $options:"i"}});
-        const data = await Post.find({authorId:{$regex :authorId, $options:"i"}}).skip((page-1)*limit).limit(limit);
+        const data = await Post.find({authorId:{$regex :authorId, $options:"i"}}).sort({ createdAt: -1 }).skip((page-1)*limit).limit(limit);
         
         
         const totalPages = Math.ceil(total.length/limit);
