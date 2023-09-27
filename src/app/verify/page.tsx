@@ -15,12 +15,10 @@ const Verify = () => {
     try {
       setMsg("please wait token verifying");
       const { data} = await userRegisterAPI({ token });
-      setMsg(data.message);
+      setMsg(data);
       router.push('/signin');
-    } catch (error: any) {
-      setMsg(error.response.data.error);
-      toast.error(error.response.data.error)
-      router.push('/signup');
+    }catch(error){
+      toast.error("error funcation call")
     }
   }
 

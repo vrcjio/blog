@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 //GET API's
 export const userSignInAPI = async () => {
@@ -41,10 +42,12 @@ export const userSignUpAPI = async (payload:any) => {
 }
 export const userRegisterAPI = async (payload:any) => {
     try {
-        const {data} = await axios.post("/api/user/signin",payload);
-        return data;
+        const {data} = await axios.post("/api/user/register",payload);
+        toast.success(data?.message);
+        return data.emsage;
 
-    } catch (error) {
-        return error;
+    } catch (error:any) {
+        toast.error(error.response.data.error)
+        return error.response.data.error;
     }
 }

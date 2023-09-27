@@ -8,7 +8,7 @@ export const POST = async (req: NextRequest) => {
         const reqBody = await req.json();
         const { token } = await reqBody;
         const data = Jwt.verify(token, process.env.JWT_TOKEN!);
-        const { email, username, hashPassword, expiryTime } =  data;
+        const { email, username, hashPassword, expiryTime } = data;
 
         const time = Date.now();
         if (time > expiryTime) {
@@ -20,13 +20,14 @@ export const POST = async (req: NextRequest) => {
         if (duser) {
             return NextResponse.json({ error: "Email already verified", success: false }, { status: 401 });
         }
-        
-        const newUser =new User({username,email,password:hashPassword,accountCreatedData:new Date()});
+
+        const newUser = new User({ username, email, password: hashPassword, accountCreatedData: new Date() });
         await newUser.save();
 
         const res = NextResponse.json({ data: data, email, message: "succefully verified", success: true }, { status: 201 });
         return res;
     } catch (error: any) {
+        console.log("error internal", error)
         return NextResponse.json({ error: "server Internal Error", success: false }, { status: 500 });
 
     }
