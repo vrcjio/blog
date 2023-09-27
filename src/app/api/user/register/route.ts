@@ -3,7 +3,7 @@ import Jwt from 'jsonwebtoken';
 import User from "@/lib/models/user";
 import { DB_Connection } from "@/lib/ConnectDb";
 
-export const POST = async (req: NextRequest) => {
+export async function POST (req: NextRequest) {
     try {
         const reqBody = await req.json();
         const { token } = await reqBody;

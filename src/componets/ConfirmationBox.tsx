@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from '@/cssModules/ConfirmationBox.module.css';
-const ConfirmationBox = ({
+export default function ConfirmationBox ({
   title="Do You want Continue this Action?",
   trueBtn = 'Process',
   falseBtn ="Cancle",
   closeModal = null,
   trueFunction = null
-}) => {
+}) {
   return (
     <div>
       <p onClick={closeModal} className={styles.Close} title='close modal' ></p>
@@ -23,5 +23,3 @@ const ConfirmationBox = ({
     </div>
   )
 }
-
-export default ConfirmationBox

@@ -6,7 +6,7 @@ import Jwt from 'jsonwebtoken';
 
 
 
-export const GET = async (req: NextRequest) => {
+export async function GET(req: NextRequest){
     const cookieToken = req.cookies.get(process.env.LOGIN_TOKEN! || "loginToken")?.value || "";
     try {
         const { data } = Jwt.verify(cookieToken, process.env.JWT_TOKEN!);
@@ -21,7 +21,7 @@ export const GET = async (req: NextRequest) => {
 }
 
 
-export const POST = async (req: NextRequest) => {
+export async function POST(req: NextRequest){
     try {
         const jsonBody = req.json();
         const { email, password } = await jsonBody;

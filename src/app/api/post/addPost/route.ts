@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Post from '@/lib/models/post';
 import { DB_Connection } from "@/lib/ConnectDb";
 
-export const POST = async(req: NextRequest) => {
+export async function POST(req: NextRequest){
 
     try {
         const reqBody = await req.json();

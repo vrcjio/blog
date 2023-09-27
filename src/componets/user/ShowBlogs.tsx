@@ -5,7 +5,7 @@ import RenderHTML from './renderHTML'
 import React from 'react'
 import { getPostsbyRedux } from '@/lib/Redux/post'
 
-const ShowBlogs = () => {
+export default function ShowBlogs() {
     const posts = useSelector((state: any) => state.post);
     const [id, setId] = React.useState();
     const [openPage, setOpenPage]:any = React.useState();
@@ -64,5 +64,3 @@ const ShowBlogs = () => {
         </>
     )
 }
-
-export default ShowBlogs

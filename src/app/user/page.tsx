@@ -3,7 +3,7 @@ import TopBar from '@/componets/topbar'
 import BlogSettings from '@/componets/user/BlogSettings'
 import React from 'react'
 
-const User = () => {
+export default function userPage(){
   return (
     <>
       <TopBar />
@@ -11,5 +11,3 @@ const User = () => {
     </>
   )
 }
-
-export default User

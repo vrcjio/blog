@@ -2,7 +2,7 @@
 import { signIn, signOut } from "next-auth/react"
 import { useSession } from 'next-auth/react';
 
-const GoogleLogoutBtn = () => {
+export default function GoogleLogoutBtn(){
     const session = useSession();
     console.log(session)
     return (
@@ -13,5 +13,3 @@ const GoogleLogoutBtn = () => {
         </>
     )
 }
-
-export default GoogleLogoutBtn

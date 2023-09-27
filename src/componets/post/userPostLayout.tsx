@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-const UserBlogLayout = ({ userData, postContent }) => {
+export default function UserBlogLayout({ userData, postContent }) {
   const [like, setLike] = useState(false)
   const [unlike, setUnLike] = useState(false)
 
@@ -163,5 +163,3 @@ const UserBlogLayout = ({ userData, postContent }) => {
     </>
   )
 }
-
-export default UserBlogLayout

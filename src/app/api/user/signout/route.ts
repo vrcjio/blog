@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import {cookies} from 'next/headers'
 
-export const GET = async(req:NextRequest) =>{
+export async function GET(req: NextRequest){
     try {
         console.log("hello user")
         const cookiesStore = cookies();  

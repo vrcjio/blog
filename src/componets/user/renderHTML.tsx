@@ -2,11 +2,11 @@
 
 import { deletePostInRedux, getUserPosts } from '@/lib/Redux/post'
 import { deletePostAPI } from '@/util/BlogAPI'
-import axios from 'axios'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-const RenderHTML = ({ item, index, pageIndex }: any) => {
+
+export default function RenderHTML ({ item, index, pageIndex }: any){
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user.data);
 
@@ -28,7 +28,7 @@ const RenderHTML = ({ item, index, pageIndex }: any) => {
     })
 
     return (
-        <div key={index} className="card mx-auto my-3" key={index} style={{ width: "18rem" }}>
+        <div key={index} className="card mx-auto my-3" style={{ width: "18rem" }}>
             {/* <Image layout='responsive' width={200} height={200} src="/santa.png" className="card-img-top" alt="santa" /> */}
             <div className="card-body">
                 <span className='text-secondary float-end'>
@@ -60,5 +60,3 @@ const RenderHTML = ({ item, index, pageIndex }: any) => {
         </div>
     )
 }
-
-export default RenderHTML

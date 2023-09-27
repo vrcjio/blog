@@ -1,7 +1,7 @@
 import { DB_Connection } from '@/lib/ConnectDb';
 import Post from '@/lib/models/post';
 import {NextRequest, NextResponse} from 'next/server';
-export const POST =async (req:NextRequest) => {
+export async function POST (req:NextRequest) {
     try {
         const {id} = await req.json();
         await DB_Connection();

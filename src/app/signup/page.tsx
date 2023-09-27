@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { userSignUpAPI } from '@/util/userAPIs'
 
-const Page = () => {
+export default function SignUpPage(){
   const [Error, setError] = React.useState({ email: '', password: '', username: '', checkBox: '' });
   const router = useRouter();
   const [checkbox, setCheckBox] = React.useState(true);
@@ -117,5 +117,3 @@ const Page = () => {
     </>
   )
 }
-
-export default Page

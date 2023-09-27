@@ -6,7 +6,7 @@ import Jwt from 'jsonwebtoken'
 import { sendEmail } from "@/lib/helper/mailer";
 
 
-export const POST = async (req: NextRequest) => {
+export async function POST(req: NextRequest){
     try {
         const reqBody = await req.json();
         const { username, password, email } = await reqBody;

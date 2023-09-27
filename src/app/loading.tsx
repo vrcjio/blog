@@ -1,5 +1,5 @@
 
-const Loading = () => {
+export default function LoadingPage(){
   return (
     <div className="loadingBackground">
       <div className='loading'>
@@ -10,5 +10,3 @@ const Loading = () => {
     </div>
   )
 }
-
-export default Loading

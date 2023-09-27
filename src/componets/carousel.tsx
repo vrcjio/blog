@@ -1,7 +1,7 @@
 import React from 'react'
 import Aos from './Aos'
 
-const Carousel = () => {
+export default function Carousel(){
     return (
         <>
             <Aos animation='fade-up'>
@@ -34,5 +34,3 @@ const Carousel = () => {
         </>
     )
 }
-
-export default Carousel

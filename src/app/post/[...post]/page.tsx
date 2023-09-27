@@ -5,8 +5,7 @@ import { getPostAPI } from '@/util/BlogAPI'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
-
-const Post = ({ params }: any) => {
+export default function PostPage ({ params }: any){
   const [author, setAuthor]: any = useState();
 
 
@@ -54,5 +53,3 @@ const Post = ({ params }: any) => {
     </>
   )
 }
-
-export default Post

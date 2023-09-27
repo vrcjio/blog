@@ -4,7 +4,7 @@ import NavLink from './NavLink'
 import UserSlide1 from './userSlide1';
 import { useSelector} from 'react-redux';
 
-const TopBar = (props: any) => {
+export default function TopBar (props: any) {
   const user = useSelector((state: any) => state.user.data);
   return (
     <>
@@ -46,5 +46,3 @@ const TopBar = (props: any) => {
     </>
   )
 }
-
-export default TopBar

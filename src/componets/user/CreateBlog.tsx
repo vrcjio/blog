@@ -3,17 +3,15 @@ import React from 'react'
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import dynamic from 'next/dynamic';
-import { addEditorData } from '@/lib/Redux/editorData';
 import { addNewPostInRedux, getUserPosts } from '@/lib/Redux/post';
 import { postBlogAPI } from '@/util/BlogAPI';
 
 
 const Editor = dynamic(() => import("./Editor"), { ssr: false });
 
-const CreateBlog = () => {
+export default function CreateBlog(){
   const [post, setPost] = React.useState('');
   const [dropdownId, setId]: any = React.useState(null);
   const [mainCategory, setMainCatgory] = React.useState('');
@@ -169,5 +167,3 @@ const CreateBlog = () => {
     </>
   )
 }
-
-export default CreateBlog

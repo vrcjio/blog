@@ -5,7 +5,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
 
-const Editor = () => {
+export default function Editor(){
     const data = useSelector((state:any)=>state.editor);
     const dispatch = useDispatch();
 
@@ -18,5 +18,3 @@ const Editor = () => {
         />
     );
 };
-
-export default Editor;

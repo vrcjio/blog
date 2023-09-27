@@ -2,9 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
-import Image from 'next/image'
-
-const UserSlide1 = () => {
+export default function UserSlide1(){
   const userData = useSelector((state: any) => state.user.data);
   const creationDate = new Date(userData.accountCreatedData);
 
@@ -27,15 +25,7 @@ const UserSlide1 = () => {
               >
                 <span className='mx-auto my-auto text-white fw-bold'>{userData?.username[0]}</span>
               </div>
-              {/* <Image
-                src="/santa.png"
-                className="rounded-circle p-1 shadow"
-                width={100} height={100}
-                role="button"
-                layout='responsive'
-                alt={userData?.username}
-                title={userData?.username}
-              /> */}
+             
               <Link href="#EditProfile" className='nav-link text-secondary d-flex' role='button'>
                 {userData?.username}
                 <i className=" ms-2 fa-regular fa-pen-to-square"></i>
@@ -67,5 +57,3 @@ const UserSlide1 = () => {
     </>
   )
 }
-
-export default UserSlide1

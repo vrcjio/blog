@@ -10,7 +10,7 @@ import { setUserData } from '@/lib/Redux/user';
 import { getUserPosts } from '@/lib/Redux/post';
 import { userSignInPostAPI } from '@/util/userAPIs';
 
-const Page = () => {
+export default function SignInPage (){
   //Error Handeling
   const [Error, setError] = React.useState({ email: '', password: '' });
   const router = useRouter();
@@ -98,5 +98,3 @@ const Page = () => {
     </>
   )
 }
-
-export default Page

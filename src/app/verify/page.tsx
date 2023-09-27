@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { userRegisterAPI } from '@/util/userAPIs';
 
-const Verify = () => {
+export default function VerifyPage(){
 
   const [msg, setMsg] = useState("");
   const [token, setToken] = useState("");
@@ -47,5 +47,3 @@ const Verify = () => {
     </>
   )
 }
-
-export default Verify

@@ -12,7 +12,7 @@ import { signOutUserAPI } from '@/util/userAPIs';
 
 
 
-const NavLink = () => {
+export default function NavLink (){
     const user = useSelector((state: any) => state.user.data);
     const dispatch = useDispatch();
     const path = usePathname();
@@ -78,5 +78,3 @@ const NavLink = () => {
         </>
     )
 }
-
-export default NavLink

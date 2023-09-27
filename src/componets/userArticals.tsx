@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Aos from './Aos'
-const UserArticals = () => {
+export default function UserArticals () {
 
   const date = new Date();
   const user = {
@@ -41,5 +41,3 @@ const UserArticals = () => {
     </>
   )
 }
-
-export default UserArticals
