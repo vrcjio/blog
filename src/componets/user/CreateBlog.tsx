@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import dynamic from 'next/dynamic';
-import { addEditorData } from '@/lib/Redux/EditorData';
+import { addEditorData } from '@/lib/Redux/editorData';
 import { addNewPostInRedux, getUserPosts } from '@/lib/Redux/post';
 import { postBlogAPI } from '@/util/BlogAPI';
 
