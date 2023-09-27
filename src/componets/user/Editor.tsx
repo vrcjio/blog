@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 export default function Editor(){
     const data = useSelector((state:any)=>state.editor);
-    const dispatch = useDispatch();
+    const dispatch :any= useDispatch();
 
     return (
         <CKEditor

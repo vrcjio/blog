@@ -26,7 +26,7 @@ export default function CreateBlog(){
   const cat = useSelector((state: any) => state.post.categories);
   const user = useSelector((state: any) => state.user.data);
   const editorData = useSelector((state: any) => state.editor.content);
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch();
   const lengthSet = 50;
 
 

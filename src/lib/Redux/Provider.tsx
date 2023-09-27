@@ -17,7 +17,7 @@ const ReduxProvider = ({ children, }: { children: React.ReactNode }) => {
 }
 
 const DefaultComponent = ({ children }: { children: React.ReactNode }) => {
-  const dispatch = useDispatch();
+  const dispatch :any= useDispatch();
   const user = useSelector((state: any) => state.user.data);
   const post = useSelector((state: any) => state.post);
   const [getOneTime, setGetOneTime] = useState(0);

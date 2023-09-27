@@ -9,7 +9,7 @@ export default function ShowBlogs() {
     const posts = useSelector((state: any) => state.post);
     const [id, setId] = React.useState();
     const [openPage, setOpenPage]:any = React.useState();
-    const dispatch = useDispatch();
+    const dispatch:any = useDispatch();
 
     const changePage = (pageNo: number) => {
         dispatch(getPostsbyRedux(pageNo))

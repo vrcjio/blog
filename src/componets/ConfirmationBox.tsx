@@ -6,10 +6,16 @@ export default function ConfirmationBox ({
   falseBtn ="Cancle",
   closeModal = null,
   trueFunction = null
+}:{
+  title:String,
+  trueBtn:String,
+  falseBtn :String
+  closeModal :any,
+  trueFunction:any
 }) {
   return (
     <div>
-      <p onClick={closeModal} className={styles.Close} title='close modal' ></p>
+      <span onClick={closeModal} className={styles.Close} title='close modal' ></span>
       <p className={styles.Modal}>
         <span onCanPlay={closeModal} className={styles.closeBtn}>&times;</span>
         <p className='mt-5 mx-3 text-danger fw-bold'>

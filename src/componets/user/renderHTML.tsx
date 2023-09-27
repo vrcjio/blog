@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function RenderHTML ({ item, index, pageIndex }: any){
-    const dispatch = useDispatch();
+    const dispatch:any = useDispatch();
     const user = useSelector((state: any) => state.user.data);
 
     const deletePost = async () => {

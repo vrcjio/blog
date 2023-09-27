@@ -14,7 +14,7 @@ import { signOutUserAPI } from '@/util/userAPIs';
 
 export default function NavLink (){
     const user = useSelector((state: any) => state.user.data);
-    const dispatch = useDispatch();
+    const dispatch:any = useDispatch();
     const path = usePathname();
 
     const [showModal, setShowModal] = React.useState(false);
