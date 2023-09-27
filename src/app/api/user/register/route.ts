@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import Jwt from 'jsonwebtoken';
+import Jwt, { JwtPayload } from 'jsonwebtoken';
 import User from "@/lib/models/user";
 import { DB_Connection } from "@/lib/ConnectDb";
 
@@ -7,7 +7,8 @@ export async function POST (req: NextRequest) {
     try {
         const reqBody = await req.json();
         const { token } = await reqBody;
-        const data = Jwt.verify(token, process.env.JWT_TOKEN!);
+        const data:JwtPayload |any = Jwt.verify(token, process.env.JWT_TOKEN!);
+        
         const { email, username, hashPassword, expiryTime } = data;
 
         const time = Date.now();
