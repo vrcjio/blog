@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-export default function UserBlogLayout({ userData, postContent }) {
+export default function UserBlogLayout({ userData, postContent }:any) {
   const [like, setLike] = useState(false)
   const [unlike, setUnLike] = useState(false)
 
@@ -19,10 +19,6 @@ export default function UserBlogLayout({ userData, postContent }) {
       if (like)
         setLike(false);
   }
-
-  useEffect(() => {
-    // console.log(postContent) //authorName createdAt category subCategory content authorId shortNote comments _id
-  })
 
   return (
     <>
