@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Aos from './Aos';
 
-export default function Footer {
+export default function Footer() {
   return (
     <>
       <Aos animation='fade-up'>

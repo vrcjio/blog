@@ -2,7 +2,7 @@ import React from 'react'
 import CreateBlog from './CreateBlog'
 import ShowBlogs from './ShowBlogs'
 
-export default function BlogSettings(){
+export default function BlogSettings() {
     return (
         <>
             <div className='col-md-10 mx-auto border my-3'>
@@ -29,7 +29,7 @@ export default function BlogSettings(){
                             </button>
                         </h2>
                         <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <ShowBlogs/>
+                            <ShowBlogs />
                         </div>
                     </div>
 
@@ -39,9 +39,9 @@ export default function BlogSettings(){
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 Edit Blog
                             </button>
-                        </h2> 
+                        </h2>
                         <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                            Hello user
                         </div>
                     </div>
                 </div>

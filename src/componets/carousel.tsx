@@ -1,7 +1,7 @@
 import React from 'react'
 import Aos from './Aos'
 
-export default function Carousel(){
+export default function Carousel() {
     return (
         <>
             <Aos animation='fade-up'>
@@ -17,13 +17,13 @@ export default function Carousel(){
                                     Dive into a world of captivating stories, insightful articles, and expert advice that will enrich your mind and ignite your passion.
                                 </p>
                                 <p>
-                                    Unearth hidden gems, unravel the mysteries, and embark on a journey of discovery with our diverse range of topics. Whether you're a curious explorer or a seasoned connoisseur, our blog is your trusted companion on the quest for knowledge.
+                                    Unearth hidden gems, unravel the mysteries, and embark on a journey of discovery with our diverse range of topics. Whether you{"'"}re a curious explorer or a seasoned connoisseur, our blog is your trusted companion on the quest for knowledge.
                                 </p>
                                 <p>
-                                    Join our community of like-minded individuals who share your thirst for wisdom and your love for storytelling. Together, we'll explore the depths of human experience, celebrate creativity, and inspire each other to reach new heights.
+                                    Join our community of like-minded individuals who share your thirst for wisdom and your love for storytelling. Together, we{"'"}ll explore the depths of human experience, celebrate creativity, and inspire each other to reach new heights.
                                 </p>
                                 <p>
-                                    It's time to embark on a new adventure. Are you ready to start your journey with us?
+                                    It{"'"}s time to embark on a new adventure. Are you ready to start your journey with us?
                                 </p>
                                 <button className='btn btn-outline-dark'>Join Now</button>
                             </div>
