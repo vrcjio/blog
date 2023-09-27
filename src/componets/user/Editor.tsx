@@ -13,7 +13,8 @@ export default function Editor(){
         <CKEditor
             editor={ClassicEditor}
             onChange={(event, editor) => {
-                dispatch(addEditorData(editor.getData()));
+                const data:any = editor.getData();
+                dispatch(addEditorData(data));
               }}
         />
     );

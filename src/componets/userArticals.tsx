@@ -16,7 +16,7 @@ export default function UserArticals () {
       <Aos animation="fade-up">
         <div className='d-flex flex-wrap justify-content-center'>
 
-          {Array(8).fill(0).map((item, index) =>
+          {Array(8).fill(0).map((item:any, index:any) =>
             <div key={index} className="shadow m-1" style={{ width: "18rem" }} data-aos="fade-up">
               <div className="card-body">
                 <div className="mb-3 text-secondary text-capitalize">
