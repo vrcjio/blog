@@ -2,7 +2,7 @@
 import { signIn, signOut } from "next-auth/react"
 import { useSession } from 'next-auth/react';
 
-export default function GoogleLoginBtn {
+export default function GoogleLoginBtn(){
     const session = useSession();
     console.log(session)
     return (
