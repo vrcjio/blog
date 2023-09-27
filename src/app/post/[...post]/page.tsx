@@ -3,12 +3,11 @@ import UserBlogLayout from '@/componets/post/userPostLayout'
 import TopBar from '@/componets/topbar'
 import { getPostAPI } from '@/util/BlogAPI'
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import toast from 'react-hot-toast'
+import { useSelector } from 'react-redux'
 
-const post = ({ params }: any) => {
+const Post = ({ params }: any) => {
   const [author, setAuthor]: any = useState();
-  const [content, setContent]: any = useState();
-  const [needAPI, setNeedAPI]: any = useState(false);
 
 
   const user = useSelector((state: any) => state.user);
@@ -19,12 +18,9 @@ const post = ({ params }: any) => {
       try {
         const { data } = await getPostAPI({ id: params.post[0] });
         setAuthor(data);
-        setContent(data.content);
         console.log("calling api");
       } catch (error) {
-        setContent("somthing error detected... try again.");
-      } finally {
-        setNeedAPI(false);
+        toast.error("server error");
       }
   }
 
@@ -34,9 +30,7 @@ const post = ({ params }: any) => {
     const data = post?.data?.[pageIndex]?.data?.[postIndex] ?? false;
     console.log(data);
     if (data ) {
-      setNeedAPI(false);
       setAuthor(data);
-      setContent(data?.content);
     } else {
       callApi();
     }
@@ -61,4 +55,4 @@ const post = ({ params }: any) => {
   )
 }
 
-export default post
+export default Post

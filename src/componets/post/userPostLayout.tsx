@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-const UserBlogLayout = ({ user, postContent }) => {
+const UserBlogLayout = ({ userData, postContent }) => {
   const [like, setLike] = useState(false)
   const [unlike, setUnLike] = useState(false)
 
@@ -61,7 +61,7 @@ const UserBlogLayout = ({ user, postContent }) => {
 
           <hr />
 
-          {/*------------------- user post----------------------- */}
+          {/*------------------- userData post----------------------- */}
           <div className='container my-3 py-3'>
             <div className='container p-3' dangerouslySetInnerHTML={{ __html: postContent?.content || "waiting" }} ></div >
           </div>
@@ -110,7 +110,7 @@ const UserBlogLayout = ({ user, postContent }) => {
               className='navbar-brand border border-4 border-light bg-success rounded-circle p-1 shadow d-flex'
               style={{ width: '45px', height: '45px' }}
               role="button"
-              // title={user?.username}
+              // title={userData?.username}
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
@@ -139,7 +139,7 @@ const UserBlogLayout = ({ user, postContent }) => {
                 postContent?.comment?.map((_, index:number) =>
                   <p className='ms-3 p-3 col-md-8 border bg-white' key={index} >
                     <span className='float-end text-secondary'>date and time</span>
-                    <h6><Link href="#username" className='nav-link p-0 text-dark'>user {index + 1}</Link></h6>
+                    <h6><Link href="#username" className='nav-link p-0 text-dark'>userData {index + 1}</Link></h6>
 
                     <span className='ms-3'>
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati fugit, tempora commodi aliquid sapiente ipsam, corporis nobis eum at quidem veritatis repellat, sint impedit modi dolorem magnam quia nisi deleniti.

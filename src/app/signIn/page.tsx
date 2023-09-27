@@ -5,13 +5,12 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '@/lib/Redux/user';
 import { getUserPosts } from '@/lib/Redux/post';
 import { userSignInPostAPI } from '@/util/userAPIs';
 
-const page = () => {
+const Page = () => {
   //Error Handeling
   const [Error, setError] = React.useState({ email: '', password: '' });
   const router = useRouter();
@@ -100,4 +99,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
