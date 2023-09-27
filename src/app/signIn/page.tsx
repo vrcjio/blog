@@ -14,7 +14,7 @@ export default function SignInPage (){
   //Error Handeling
   const [Error, setError] = React.useState({ email: '', password: '' });
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch();
   const user = useSelector((state: any) => state.user.data);
   const [routeBtnLoading, setRouteBtnLoading] = React.useState(false);
 

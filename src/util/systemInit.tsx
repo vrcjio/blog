@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 const LoadingInit = () =>{
-    const dispatch = useDispatch();
+    const dispatch:any = useDispatch();
     useEffect(()=>{
         dispatch(setLoading(false));
     },[]);
