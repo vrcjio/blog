@@ -4,7 +4,7 @@ import UserArticals from "@/componets/userArticals"
 import Loading from "./loading"
 import LoadingInit from "@/util/systemInit"
 
-const page = () => {
+const Page = () => {
   return (
     <>
     <LoadingInit />
@@ -17,4 +17,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
