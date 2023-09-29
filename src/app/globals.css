@@ -61,6 +61,10 @@ button:focus {
 .joinNowBtn:hover{
   color:white !important;
 }
+
+.myHTMLPage img{
+  width:100%;
+}
 /* error hide in nextjs */
 /* nextjs-portal {
   display: none;

@@ -3,7 +3,6 @@
 import { deletePostInRedux, getUserPosts } from '@/lib/Redux/post'
 import { deletePostAPI } from '@/util/BlogAPI'
 import Link from 'next/link'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function RenderHTML ({ item, index, pageIndex }: any){
@@ -22,10 +21,6 @@ export default function RenderHTML ({ item, index, pageIndex }: any){
         }
     }
 
-    useEffect(() => {
-        // console.log(user);
-        // console.log(item);
-    })
 
     return (
         <div key={index} className="card mx-auto my-3" style={{ width: "18rem" }}>

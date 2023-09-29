@@ -26,11 +26,11 @@ export default function Carousel() {
                                 <p>
                                     It{"'"}s time to embark on a new adventure. Are you ready to start your journey with us?
                                 </p>
-                                <Link href="/signin" prefetch={false} className='btn btn-outline-dark joinNowBtn'  role="button">Join Now</Link>
+                                <Link href="/signup" prefetch={false} className='btn btn-outline-dark joinNowBtn'  role="button">Join Now</Link>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </Aos>
         </>
     )

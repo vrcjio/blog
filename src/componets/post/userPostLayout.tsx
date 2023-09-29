@@ -58,7 +58,7 @@ export default function UserBlogLayout({ userData, postContent }:any) {
           <hr />
 
           {/*------------------- userData post----------------------- */}
-          <div className='container my-3 py-3'>
+          <div className='container my-3 py-3 col-12 myHTMLPage'>
             <div className='container p-3' dangerouslySetInnerHTML={{ __html: postContent?.content || "waiting" }} ></div >
           </div>
 

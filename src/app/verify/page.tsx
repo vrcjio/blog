@@ -17,7 +17,7 @@ export default function VerifyPage(){
       setMsg("please wait token verifying");
       const { data} = await userRegisterAPI({ token });
       setMsg(data);
-      router.push('/signin');
+      router.push('/login');
     }catch(error){
       toast.error("error funcation call")
     }

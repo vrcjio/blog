@@ -43,11 +43,11 @@ export default function CreateBlog(){
       const data = await postBlogAPI(userPost);
       toast.success('successfully published your post 👍');
       dispatch(addNewPostInRedux());
-      // setPost('');
-      // setPostTitle('')
-      // setShortNote('')
-      // dispatch(addEditorData(""));
-      // dispatch(addPostsInRedux());
+      setPost('');
+      setPostTitle('')
+      setShortNote('')
+      dispatch(addEditorData(""));
+      dispatch(addPostsInRedux());
     } catch (error: any) {
       console.log(error);
       toast.error('Server Error Detected. 😒');
