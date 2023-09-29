@@ -8,7 +8,7 @@ export const editorSlice = createSlice({
     name: "editor",
     initialState,
     reducers: {
-        addEditorData: (state, action: any) => {
+        addEditorData: (state, action) => {
             state.content = action.payload;
         }
     }
