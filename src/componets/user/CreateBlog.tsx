@@ -47,7 +47,7 @@ export default function CreateBlog(){
       setPost('');
       setPostTitle('')
       setShortNote('')
-      dispatch(addEditorData(""));
+      dispatch(addEditorData(''));
       dispatch(addNewPostInRedux());
     } catch (error: any) {
       console.log(error);
