@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import dynamic from 'next/dynamic';
 import { addNewPostInRedux, getUserPosts } from '@/lib/Redux/post';
 import { postBlogAPI } from '@/util/BlogAPI';
+import { addEditorData } from '@/lib/Redux/editorData';
 
 
 const Editor = dynamic(() => import("./Editor"), { ssr: false });
@@ -47,7 +48,7 @@ export default function CreateBlog(){
       setPostTitle('')
       setShortNote('')
       dispatch(addEditorData(""));
-      dispatch(addPostsInRedux());
+      dispatch(addNewPostInRedux());
     } catch (error: any) {
       console.log(error);
       toast.error('Server Error Detected. 😒');
