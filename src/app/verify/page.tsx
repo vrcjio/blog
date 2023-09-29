@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { userRegisterAPI } from '@/util/userAPIs';
+import Footer from '@/componets/footer';
 
 export default function VerifyPage(){
 
@@ -44,6 +45,7 @@ export default function VerifyPage(){
         <div className="spinner-border text-warning m-5 p-3" role="status">
         </div>
       </div>
+      <Footer />
     </>
   )
 }

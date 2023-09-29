@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
-import Footer from '@/componets/footer'
 import { Toaster } from 'react-hot-toast'
 import ReduxProvider from '@/lib/Redux/Provider'
 
@@ -25,7 +24,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReduxProvider>
             {children}
-            <Footer />
             <Toaster />
         </ReduxProvider>
         <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" defer />

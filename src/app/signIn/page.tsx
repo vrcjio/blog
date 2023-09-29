@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from '@/lib/Redux/user';
 import { getUserPosts } from '@/lib/Redux/post';
 import { userSignInPostAPI } from '@/util/userAPIs';
+import Footer from '@/componets/footer';
 
 export default function SignInPage (){
   //Error Handeling
@@ -94,7 +95,7 @@ export default function SignInPage (){
           </div>
         </div>
       </Aos>
-
+    <Footer />
     </>
   )
 }

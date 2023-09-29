@@ -1,4 +1,5 @@
 'use client'
+import Footer from '@/componets/footer'
 import UserBlogLayout from '@/componets/post/userPostLayout'
 import TopBar from '@/componets/topbar'
 import { getPostAPI } from '@/util/BlogAPI'
@@ -50,6 +51,7 @@ export default function PostPage ({ params }: any){
         <UserBlogLayout userData={user} postContent={author} />
       }
 
+      <Footer />
     </>
   )
 }

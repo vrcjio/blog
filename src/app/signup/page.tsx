@@ -6,8 +6,9 @@ import { toast } from 'react-hot-toast'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { userSignUpAPI } from '@/util/userAPIs'
+import Footer from '@/componets/footer'
 
-export default function SignUpPage(){
+export default function SignUpPage() {
   const [Error, setError] = React.useState({ email: '', password: '', username: '', checkBox: '' });
   const router = useRouter();
   const [checkbox, setCheckBox] = React.useState(true);
@@ -102,7 +103,7 @@ export default function SignUpPage(){
                   <div className="spinner-border text-secondary mx-auto" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div> :
-                  <button onClick={() => {setRouteBtnLoading(true);router.push("/signin")}} className="btn my-3 btn-outline-success" type="button">I have Account</button>
+                  <button onClick={() => { setRouteBtnLoading(true); router.push("/signin") }} className="btn my-3 btn-outline-success" type="button">I have Account</button>
 
               }
             </div>
@@ -114,6 +115,7 @@ export default function SignUpPage(){
         </div>
       </Aos>
 
+      <Footer />
     </>
   )
 }

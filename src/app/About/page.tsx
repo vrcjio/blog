@@ -1,6 +1,6 @@
 import TopBar from "@/componets/topbar"
 
-const page = () => {
+export default function About() {
   return (
     <>
     <TopBar/>
@@ -8,5 +8,3 @@ const page = () => {
     </>
   )
 }
-
-export default page

@@ -36,7 +36,7 @@ export default function UserArticals() {
                             <RenderHTML item={item} index={index} pageIndex={openPage-1} />
                         )
                         :
-                        <h1>Not post here</h1>
+                        <h1>Refresh Page after</h1>
                 }
             </div>
             <div className='bg-light border d-flex justify-content-center'>

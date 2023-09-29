@@ -67,7 +67,7 @@ export default function NavLink (){
                         </Link>
                 }
                 <Link href="/about" className={`fw-bold nav-link ${path === '/about' && 'text-warning'}`}>
-                    About
+                    Go About
                 </Link>
             </span >
             <form className="d-flex">
