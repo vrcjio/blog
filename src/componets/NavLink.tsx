@@ -62,12 +62,12 @@ export default function NavLink (){
                             </Link>
                         </>
                         :
-                        <Link href="/signin" className={`fw-bold nav-link ${path === '/signin' && 'text-warning'}`}>
-                            Sign In
+                        <Link href="/login" className={`fw-bold nav-link ${path === '/login' && 'text-warning'}`}>
+                            Login
                         </Link>
                 }
-                <Link href="/about" className={`fw-bold nav-link ${path === '/about' && 'text-warning'}`}>
-                    Go About
+                <Link href="/contactUs" className={`fw-bold nav-link ${path === '/contactUs' && 'text-warning'}`}>
+                    Contact Us
                 </Link>
             </span >
             <form className="d-flex">
