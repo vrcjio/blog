@@ -1,15 +1,12 @@
 'use client'
 
 import TopBar from "@/componets/topbar";
+import { PageRoute } from "@/config";
 import Link from "next/link";
 import { useEffect } from "react"
 
 
 export default function PostError({ error, reset, }: { error: Error, reset: () => void }) {
-  useEffect(() => {
-    console.log(error.message);
-    console.log(error);
-  })
 
   return (
     <>
@@ -19,7 +16,7 @@ export default function PostError({ error, reset, }: { error: Error, reset: () =
         <h2 className="text-danger">Something went wrong!</h2>
         <button className="btn btn-outline-info" onClick={() => reset()}>Try again</button>
         <br />
-        <Link href="/" className="nav-link text-success fw-bold m-3" >
+        <Link href={PageRoute?.Home || '/'} className="nav-link text-success fw-bold m-3" >
           Home 
         </Link>
         <br />

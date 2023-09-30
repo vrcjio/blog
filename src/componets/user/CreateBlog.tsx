@@ -50,7 +50,6 @@ export default function CreateBlog(){
       dispatch(addEditorData(''));
       dispatch(addNewPostInRedux());
     } catch (error: any) {
-      console.log(error);
       toast.error('Server Error Detected. 😒');
     }
   }
@@ -93,7 +92,6 @@ export default function CreateBlog(){
 
 
   React.useEffect(() => {
-    // console.log("categorycs ", user);
     getIndex(cat[0].Main, 0);
     setSubCatgory(cat[0].subCategories[0]);
   }, []);

@@ -3,6 +3,7 @@ import React from 'react'
 import NavLink from './NavLink'
 import UserSlide1 from './userSlide1';
 import { useSelector} from 'react-redux';
+import { PageRoute } from '@/config';
 
 export default function TopBar (props: any) {
   const user = useSelector((state: any) => state.user.data);
@@ -28,7 +29,7 @@ export default function TopBar (props: any) {
                     <UserSlide1 />
                 </>
             }
-          <a className="navbar-brand" href="#">Blog Now</a>
+          <a className="navbar-brand" href={PageRoute?.Home || "/"}>Blog Now</a>
           
 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

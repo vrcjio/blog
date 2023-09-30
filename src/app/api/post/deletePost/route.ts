@@ -12,10 +12,9 @@ export const POST = async (req: NextRequest) => {
 
         await DB_Connection();
         const res = await Post.deleteOne({_id});
-        console.log(res);
         return NextResponse.json({ data: "data", status: true }, { status: 200 });
     } catch (error: any) {
-        return NextResponse.json({ error: "server internal error", status: false }, { status: 500 })
+        return NextResponse.json({ message: "server internal error",  error: "server internal error", status: false }, { status: 500 })
     }
 
 }

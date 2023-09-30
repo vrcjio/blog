@@ -5,9 +5,7 @@ import Jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
 export async function signInFrom(user: userLogin) {
     try {
-        console.log(user);
     } catch (error) {
-        console.log("server Error Found");
     }
 }
 
@@ -23,13 +21,11 @@ export async function signWithGoogle(user: UserSignupGoogle) {
             // Convert newUser (Mongoose document) to a plain object
             const userObject = newUser.toObject();
             const token = Jwt.sign(userObject, process.env.JWT_TOKEN!);
-            console.log("token is : ", token);
             sessionStorage.setItem("token",token)
         } else {            
             // Convert duser (Mongoose document) to a plain object
             const userObject = duser.toObject();
             const token = Jwt.sign(userObject, process.env.JWT_TOKEN!);  
-            console.log("token is : ", token);
             sessionStorage.setItem("token",token)
         }
 

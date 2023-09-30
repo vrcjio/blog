@@ -12,12 +12,11 @@ export default function RenderHTML ({ item, index, pageIndex }: any){
     const deletePost = async () => {
         try {
             const { data } = await deletePostAPI({ _id: item._id })
-            console.log(data)
             dispatch(getUserPosts({ authorId: item.authorId }));
             dispatch(deletePostInRedux({ page: index }));
 
         } catch (error: any) {
-            console.log("error is : ", error)
+        
         }
     }
 

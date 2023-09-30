@@ -28,8 +28,7 @@ export async function POST (req: NextRequest) {
         const res = NextResponse.json({ data: data, email, message: "succefully verified", success: true }, { status: 201 });
         return res;
     } catch (error: any) {
-        console.log("error internal", error)
-        return NextResponse.json({ error: "server Internal Error", success: false }, { status: 500 });
+        return NextResponse.json({ message: "server internal error",  error: "server Internal Error", success: false }, { status: 500 });
 
     }
 }

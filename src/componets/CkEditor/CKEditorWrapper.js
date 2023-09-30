@@ -25,7 +25,7 @@ export default function Editor(){
         },
         }}
       />
-      <button onClick={() => console.log(editorData)}>Log Editor Content</button>
+      <button >Log Editor Content</button>
     </div>
   );
 };

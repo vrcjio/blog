@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { userRegisterAPI } from '@/util/userAPIs';
 import Footer from '@/componets/footer';
+import { PageRoute } from '@/config';
 
 export default function VerifyPage(){
 
@@ -17,7 +18,7 @@ export default function VerifyPage(){
       setMsg("please wait token verifying");
       const { data} = await userRegisterAPI({ token });
       setMsg(data);
-      router.push('/login');
+      router.push(PageRoute?.login||'/login');
     }catch(error){
       toast.error("error funcation call")
     }

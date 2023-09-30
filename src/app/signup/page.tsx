@@ -7,12 +7,17 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { userSignUpAPI } from '@/util/userAPIs'
 import Footer from '@/componets/footer'
+import { PageRoute } from '@/config'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '@/lib/Redux/systemSlice'
 
 export default function SignUpPage() {
   const [Error, setError] = React.useState({ email: '', password: '', username: '', checkBox: '' });
   const router = useRouter();
   const [checkbox, setCheckBox] = React.useState(true);
   const [routeBtnLoading, setRouteBtnLoading] = React.useState(false);
+  const system = useSelector((state: any) => state.system);
+  const dispatch: any = useDispatch();
 
   const handleOnSubmit = async (formData: FormData) => {
     const username = formData.get('username')?.toString();
@@ -36,14 +41,14 @@ export default function SignUpPage() {
 
     if (username && email && password && checkbox) {
       try {
+        dispatch(setLoading(true));
         const { data } = await userSignUpAPI({ username, email, password });
-        console.log("data is : ", data)
 
         toast.success(data.message)
       } catch (error: any) {
-        console.log("Error ", error.response.data.error);
         toast.error(error.response.data.error)
       } finally {
+        dispatch(setLoading(false));
       }
     }
 
@@ -92,10 +97,16 @@ export default function SignUpPage() {
                 <label className="form-check-label" htmlFor="InputCheck"><Link href="#">I Agery T&C</Link></label>
                 <div id="emailError" className="form-text text-danger">{Error.checkBox}</div>
               </div>
-
-              <button type="submit" className="btn btn-outline-dark mb-3">
-                Submit
-              </button>
+              {
+                system?.isLoading ?
+                  <div className="spinner-border text-secondary mx-auto" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  :
+                  <button type="submit" className="btn btn-outline-dark mb-3">
+                    Submit
+                  </button>
+              }
             </form>
             <div className="d-grid gap-2">
               {
@@ -103,14 +114,9 @@ export default function SignUpPage() {
                   <div className="spinner-border text-secondary mx-auto" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div> :
-                  <button onClick={() => { setRouteBtnLoading(true); router.push("/signin") }} className="btn my-3 btn-outline-success" type="button">I have Account</button>
-
+                  <button onClick={() => { setRouteBtnLoading(true); router.push(PageRoute?.login || "/login") }} className="btn my-3 btn-outline-success" type="button">I have Account</button>
               }
             </div>
-            {/* <Link href="#" className='mb-3'>Forgate Password</Link>
-
-            <hr />
-            <GoogleLoginBtn /> */}
           </div>
         </div>
       </Aos>

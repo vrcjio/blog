@@ -9,7 +9,6 @@ export const getUserPosts = createAsyncThunk('getUserPosts', async (payload: any
         return data;
 
     } catch (error) {
-        console.log(error)
         return error;
     }
 });
@@ -78,7 +77,6 @@ export const postSlice = createSlice({
         })
 
         builder.addCase(getUserPosts.rejected, (state: any, action) => {
-            console.log("error found ", action.payload);
             state.isError = true;
         })
     }

@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       <div className="card border-0" style={{ width: "18rem" }}>
         {/* <img src="/error404Page.png" className="card-img-top" alt="404" /> */}
-        <img src="/ConnectionBreak.png" className="card-img-top" alt="404" />
+        <img src="/error404Page.png" className="card-img-top" alt="404" />
         <div className="card-body text-center">
           <h5 className="card-title">Page Not Found</h5>
           <p className="card-text">

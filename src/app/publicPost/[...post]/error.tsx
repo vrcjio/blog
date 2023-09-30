@@ -6,10 +6,6 @@ import { useEffect } from "react"
 
 
 export default function PostError({ error, reset, }: { error: Error, reset: () => void }) {
-  useEffect(() => {
-    console.log(error.message);
-    console.log(error);
-  })
 
   return (
     <>

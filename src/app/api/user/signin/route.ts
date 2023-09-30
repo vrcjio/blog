@@ -14,8 +14,7 @@ export async function GET(req: NextRequest){
         return NextResponse.json({ data }, { status: 200 });
 
     } catch (error: any) {
-        console.log(error)
-        return NextResponse.json({ error: "server internal error", success: false }, { status: 500 })
+        return NextResponse.json({ message: "server internal error", error: "server internal error", success: false }, { status: 500 })
 
     }
 }
@@ -53,7 +52,6 @@ export async function POST(req: NextRequest){
         return res;
 
     } catch (error: any) {
-        console.log(error)
-        return NextResponse.json({ error: "server internal error", success: false }, { status: 500 })
+        return NextResponse.json({ message: "server internal error", error: "server internal error", success: false }, { status: 500 })
     }
 }

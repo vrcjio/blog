@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import React from 'react'
 import { getPublicPostLocal } from '@/lib/Redux/publicPost'
 import dynamic from 'next/dynamic';
+import InternetConnection from './Erros/InternetConnection';
 
 export default function UserArticals() {
     const RenderHTML = dynamic(() => import('./user/renderHTML'), { ssr: false });
     const posts = useSelector((state: any) => state.publicPost);
-    const [id, setId] = React.useState();
     const [openPage, setOpenPage]:any = React.useState();
     const dispatch:any = useDispatch();
 
@@ -17,13 +17,12 @@ export default function UserArticals() {
     }
 
     React.useEffect(() => {
-        setId(posts?.data?.authorId);
         setOpenPage(posts?.currentPage);
     });
 
     return (
         <div>
-            <h6 className='m-2 me-5 pe-5  text-secondary position-absolute end-0 '>total : {posts.data[openPage-1]?.totalData && posts.data[openPage-1]?.totalData}</h6>
+            {/* <h6 className='m-2 me-5 pe-5  text-secondary position-absolute end-0 '>total : {posts.data[openPage-1]?.totalData && posts.data[openPage-1]?.totalData}</h6> */}
             <div className="accordion-body d-flex flex-wrap">
                 {
                     posts.isLoading ?
@@ -34,10 +33,10 @@ export default function UserArticals() {
 
                         posts.data[openPage-1]?.data ?
                         posts.data[openPage-1]?.data.map((item: any, index: number) =>
-                            <RenderHTML item={item} key={index} pageIndex={openPage-1} />
+                            <RenderHTML item={item} key={index} index={index} pageIndex={openPage-1} />
                         )
                         :
-                        <h1>Refresh Page after</h1>
+                        <InternetConnection />
                 }
             </div>
 

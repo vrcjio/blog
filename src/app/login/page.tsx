@@ -10,18 +10,23 @@ import { setUserData } from '@/lib/Redux/user';
 import { getUserPosts } from '@/lib/Redux/post';
 import { userSignInPostAPI } from '@/util/userAPIs';
 import Footer from '@/componets/footer';
+import { PageRoute } from '@/config';
+import LoadingInit from '@/util/systemInit';
+import { setLoading } from '@/lib/Redux/systemSlice';
 
-export default function SignInPage (){
+export default function SignInPage() {
   //Error Handeling
   const [Error, setError] = React.useState({ email: '', password: '' });
   const router = useRouter();
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const user = useSelector((state: any) => state.user.data);
+  const system = useSelector((state: any) => state.system);
   const [routeBtnLoading, setRouteBtnLoading] = React.useState(false);
 
   //from action handeling
   const handleOnSubmit = async (formData: FormData) => {
     try {
+      dispatch(setLoading(true));
       const email = formData.get('email')?.toString();
       const password = formData.get('password')?.toString();
 
@@ -33,26 +38,19 @@ export default function SignInPage (){
           setError({ ...Error, password: "Add password is compalsory" });
         }
       } else {
-         const {data} = await userSignInPostAPI({ email, password });
-        //set Redux data
-         dispatch(setUserData());
-         if(user && user._id){
-          dispatch(getUserPosts({authorId:user.id}));
-         }
-        
-        
+        const res = await userSignInPostAPI({ email, password });
+        dispatch(setUserData());
+        if (user && user._id) {
+          dispatch(getUserPosts({ authorId: user.id }));
+        }
+
         //set redux data
-        router.push("/user");
+        router.push(PageRoute?.dashboard || '/user');
       }
     } catch (error: any) {
-      console.log(error);
-      if (error.response.data.errorMsg == 'email') {
-        setError({ ...Error, email: "Invalied mail id" });
-      }
-      if (error.response.data.errorMsg == 'password') {
-        setError({ ...Error, password: "Invalied password" });
-      }
-      toast.error(error.response.data.message);
+      
+    } finally {
+      dispatch(setLoading(false));
     }
 
   }
@@ -80,22 +78,31 @@ export default function SignInPage (){
                 <input type="checkbox" className="form-check-input" id="InputCheck" />
                 <label className="form-check-label" htmlFor="InputCheck">Check me out</label>
               </div>
-              <button type="submit" className="btn btn-outline-dark mb-3">Sign In</button>
+              {
+                system?.isLoading ?
+                  <div className="spinner-border text-secondary mx-auto" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  :
+                  <button type="submit" className="btn btn-outline-dark mb-3">
+                    Sign In
+                  </button>
+              }
             </form>
             <Link href="#" className='mb-3'>Forgate Password</Link><br />
             <div className="d-grid gap-2">
-            {
+              {
                 routeBtnLoading ?
                   <div className="spinner-border text-secondary mx-auto" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div> :
-                 <button onClick={()=>{setRouteBtnLoading(true);router.push("/signup")}} className="btn my-3 btn-outline-info" type="button">Sign Up Now</button>
+                  <button onClick={() => { setRouteBtnLoading(true); router.push("/signup") }} className="btn my-3 btn-outline-info" type="button">Sign Up Now</button>
               }
             </div>
           </div>
         </div>
       </Aos>
-    <Footer />
+      <Footer />
     </>
   )
 }

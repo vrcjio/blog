@@ -18,7 +18,6 @@ export default function PostPage ({ params }: any){
       try {
         const { data } = await getPostAPI({ id: params.post[0] });
         setAuthor(data);
-        console.log("calling api");
       } catch (error) {
         toast.error("server error");
       }
@@ -28,7 +27,6 @@ export default function PostPage ({ params }: any){
     const pageIndex = params?.post?.[3];
     const postIndex = params?.post?.[2];
     const data = post?.data?.[pageIndex]?.data?.[postIndex] ?? false;
-    console.log(data);
     if (data ) {
       setAuthor(data);
     } else {

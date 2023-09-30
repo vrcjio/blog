@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { initUser, setUserData } from '@/lib/Redux/user';
 import { signOutUserAPI } from '@/util/userAPIs';
 import { initAllPost } from '@/lib/Redux/post';
-import {} from '@/config'
+import { PageRoute } from '@/config'
 
 
 
@@ -33,7 +33,6 @@ export default function NavLink (){
             dispatch(initUser());
             router.push("/");
         } catch (error) {
-            console.log(error);
             toast.error("please try again")
         }
     }
@@ -49,13 +48,13 @@ export default function NavLink (){
             />}
 
             <span className="navbar-nav me-auto mb-2 mb-lg-0">
-                <Link href="/" className={`fw-bold nav-link ${path === '/' && 'text-warning'}`}>
+                <Link href={PageRoute?.Home || "/"} className={`fw-bold nav-link ${path === '/' && 'text-warning'}`}>
                     Home
                 </Link>
                 {
                     user ?
                         <>
-                            < Link href="/user" className={`fw-bold nav-link ${path === '/user' && 'text-warning'}`}>
+                            < Link href={PageRoute?.dashboard || "/user"} className={`fw-bold nav-link ${path === '/user' && 'text-warning'}`}>
                                 Dashboard
                             </Link>
                             <Link onClick={signOut} href="#signOut" className={`fw-bold nav-link`}>
@@ -63,11 +62,11 @@ export default function NavLink (){
                             </Link>
                         </>
                         :
-                        <Link href="/login" className={`fw-bold nav-link ${path === '/login' && 'text-warning'}`}>
+                        <Link href={PageRoute?.login || "/login"} className={`fw-bold nav-link ${path === '/login' && 'text-warning'}`}>
                             Login
                         </Link>
                 }
-                <Link href="/contactUs" className={`fw-bold nav-link ${path === '/contactUs' && 'text-warning'}`}>
+                <Link href={PageRoute?.contact || "/contactUs"} className={`fw-bold nav-link ${path === '/contactUs' && 'text-warning'}`}>
                     Contact Us
                 </Link>
             </span >

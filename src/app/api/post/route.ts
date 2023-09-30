@@ -5,7 +5,6 @@ import {NextRequest, NextResponse} from 'next/server';
 export async function POST (req:NextRequest) {
     try {
         const {authorId ="", page = 1, limit = 3} = await req.json();
-        console.log("author id : ",authorId)
         
         await DB_Connection(); 
         const total = await Post.find({authorId:{$regex :authorId, $options:"i"}});
@@ -17,7 +16,6 @@ export async function POST (req:NextRequest) {
         return NextResponse.json({authorId,totalPages, totalData : total.length, page, limit, data}, {status:200});
 
     } catch (error:any) {
-        console.log("Get Post error is : ", error);
-        return NextResponse.json({error, success: false }, { status: 500 });
+        return NextResponse.json({ message: "server internal error", error, success: false }, { status: 500 });
     }
 }

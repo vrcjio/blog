@@ -9,7 +9,6 @@ export const getPublicPosts = createAsyncThunk('getPublicPosts', async (payload:
         return data;
 
     } catch (error) {
-        console.log(error)
         return error;
     }
 });
@@ -65,7 +64,6 @@ export const publicPostSlice = createSlice({
         })
 
         builder.addCase(getPublicPosts.rejected, (state: any, action) => {
-            console.log("error found ", action.payload);
             state.isError = true;
         })
     }

@@ -30,7 +30,6 @@ export const userSlice = createSlice({
         })
 
         builder.addCase(setUserData.rejected, (state: any, action) => {
-            console.log("error found ", action.payload);
             state.isError = true;
         })
     }
