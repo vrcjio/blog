@@ -21,7 +21,7 @@ function InternetConnection() {
                     </span>
                 </p>
 
-                <button onClick={() => dispatch(getPublicPosts(''))} className="btn btn-outline-info">
+                <button onClick={() => dispatch(getPublicPosts(""))} className="btn btn-outline-info">
                     Retry To Connect
                 </button>
             </div>

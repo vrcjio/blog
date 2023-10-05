@@ -14,7 +14,7 @@ export async function GET(req: NextRequest){
         return NextResponse.json({ data }, { status: 200 });
 
     } catch (error: any) {
-        return NextResponse.json({ message: "server internal error", error: "server internal error", success: false }, { status: 500 })
+        return NextResponse.json({ message: "I Think You need Login 😊", error: "server internal error", success: false }, { status: 500 })
 
     }
 }

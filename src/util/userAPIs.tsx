@@ -10,7 +10,7 @@ export const userSignInAPI = async () => {
         return data;
 
     } catch (error:any) {
-        toast.error(error?.response?.data?.message);
+        toast(error?.response?.data?.message);
         return error;
     }
 }
