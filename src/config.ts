@@ -4,7 +4,7 @@ export const PageRoute = {
     Home: "/",
     login : "/login",
     singup : "/signup",
-    contact  : "/contactUs",
+    contact  : "/about",
     post : "/post",
     publicPost : "/publicPost",
     dashboard : "/user",
