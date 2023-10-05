@@ -67,7 +67,7 @@ export default function NavLink (){
                         </Link>
                 }
                 <Link href={PageRoute?.contact || "/contactUs"} className={`fw-bold nav-link ${path === '/contactUs' && 'text-warning'}`}>
-                    Contact Us
+                    About
                 </Link>
             </span >
             <form className="d-flex">

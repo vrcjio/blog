@@ -42,9 +42,7 @@ export default function SignUpPage() {
     if (username && email && password && checkbox) {
       try {
         dispatch(setLoading(true));
-        const { data } = await userSignUpAPI({ username, email, password });
-
-        toast.success(data.message)
+        await userSignUpAPI({ username, email, password });
       } catch (error: any) {
         toast.error(error.response.data.error)
       } finally {

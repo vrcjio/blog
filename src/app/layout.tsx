@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { Toaster } from 'react-hot-toast'
 import ReduxProvider from '@/lib/Redux/Provider'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const inter = Inter({ subsets: ['latin'] })

@@ -42,7 +42,6 @@ export default function CreateBlog(){
   const postBlog = async(userPost: any) =>{
     try {
       const data = await postBlogAPI(userPost);
-      toast.success('successfully published your post 👍');
       dispatch(addNewPostInRedux());
       setPost('');
       setPostTitle('')
